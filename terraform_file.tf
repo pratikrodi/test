@@ -1,22 +1,19 @@
 provider "aws" {
-region "us-east-1"
+  region = "ap-south-1"
 }
 
 resource "aws_instance" "myinstance" {
 
-ami = "ami-0c398cb65a93047f2"
+  ami           = "ami-02b8269d5e85954ef"
+  instance_type = "t3.micro"
 
-instance_type = "t3.micro"
+  vpc_security_group_ids = ["sg-0e096bbd6bd8b792a"]
 
-vpc_security_group_ids = ["sg-0f7b2e9cf35734448"]
+  key_name = "mumbai-key"
 
-key_name = "id_rsa"
+  availability_zone = "us-east-1a"
 
-availability_zone = "us-east-1a"
-
-tags = {
-
-name = "myinstance"
-
-}
+  tags = {
+    Name = "myinstance"
+  }
 }
