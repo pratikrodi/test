@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket = "terra-pract"
-    region = "ap-south-1a"
+    region = "ap-south-1"
     key = "tfstate"
   }
 }
