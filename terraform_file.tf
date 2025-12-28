@@ -12,16 +12,26 @@ provider "aws" {
 
 resource "aws_instance" "myinstance" {
 
-  ami           = "ami-02b8269d5e85954ef"
-  instance_type = "t3.micro"
+  ami           = var.ami_id
+  instance_type = var.instance_type
 
   vpc_security_group_ids = ["sg-0e096bbd6bd8b792a"]
 
-  key_name = "mumbai-key"
+  key_name = var.key_name
 
   availability_zone = "ap-south-1a"
 
   tags = {
     Name = "myinstance"
   }
+}
+
+variable "ami_id" {
+    default = "ami-02b8269d5e85954ef"
+}
+variable "instance_type" {
+    default = "t3.micro"
+}
+variable "key_name" {
+    default = "mumbai-key"
 }
