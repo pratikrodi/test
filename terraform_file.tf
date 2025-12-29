@@ -19,7 +19,7 @@ data "aws_security_group" "mysg" {
 
     filter {
       name = "vpc-id"
-      values = [ local.vpc_id ]
+      values = [ var.vpc_id ]
     }
   
 }
@@ -40,8 +40,8 @@ resource "aws_instance" "myinstance" {
   }
 }
 
-locals {
-  vpc_id = "vpc-070d186a0639513c6"
+variable "vpc_id" {
+    default = "vpc-070d186a0639513c6"
 }
 
 variable "ami_id" {
