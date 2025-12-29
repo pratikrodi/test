@@ -11,17 +11,7 @@ provider "aws" {
 }
 
 data "aws_security_group" "mysg" {
-
-    filter {
-        name   = "group-name"
-        values = ["mysg"]
-    }
-
-    filter {
-      name = "vpc-id"
-      values = [ var.vpc_id ]
-    }
-  
+  id = "sg-0f56e48b0c4f8a957"
 }
 
 resource "aws_instance" "myinstance" {
