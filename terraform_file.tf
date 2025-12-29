@@ -10,12 +10,26 @@ provider "aws" {
   region = "ap-south-1"
 }
 
+data "aws_security_group" "mysg" {
+
+    filter {
+        name   = "group-name"
+        values = ["mysg"]
+    }
+
+    filter {
+      name = "vpc-id"
+      values = [ local.vpc_id ]
+    }
+  
+}
+
 resource "aws_instance" "myinstance" {
 
   ami           = var.ami_id
   instance_type = var.instance_type
 
-  vpc_security_group_ids = ["sg-0e096bbd6bd8b792a"]
+  vpc_security_group_ids = [ data.aws_security_group.mysg.id ]
 
   key_name = var.key_name
 
@@ -24,6 +38,10 @@ resource "aws_instance" "myinstance" {
   tags = {
     Name = "myinstance"
   }
+}
+
+locals {
+  vpc_id = "vpc-070d186a0639513c6"
 }
 
 variable "ami_id" {
@@ -43,3 +61,4 @@ output "instance_id" {
 output "public_ip" {
   value = aws_instance.myinstance.public_ip
 }
+
