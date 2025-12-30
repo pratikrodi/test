@@ -17,7 +17,7 @@ data "aws_security_group" "mysg" {
   }
   filter {
     name   = "group-name"
-    values = ["mysg"]
+    values = [var.sg_group_name]
   }
 }
 
