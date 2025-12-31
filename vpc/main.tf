@@ -63,26 +63,6 @@ resource "aws_route_table_association" "public_assoc" {
   route_table_id = aws_route_table.public_rt.id
 }
 
-resource "aws_eip" "nat_eip" {
-  domain = "vpc"
-
-  tags = merge(
-    { Name = "nat-eip" },
-    var.tags
-  )
-}
-
-resource "aws_nat_gateway" "natgw" {
-  allocation_id = aws_eip.nat_eip.id
-  subnet_id     = aws_subnet.pubsubnet.id
-
-  depends_on = [aws_internet_gateway.myigw]
-
-  tags = merge(
-    { Name = "natgw" },
-    var.tags
-  )
-}
 
 resource "aws_route_table" "private_rt" {
   vpc_id = aws_vpc.myvpc.id
