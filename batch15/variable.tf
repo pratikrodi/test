@@ -20,7 +20,7 @@ variable "instance_count" {
   default = "2"
 }
 variable "image_id" {
-  default = "ami-0ecb62995f68bb549"
+  default = "ami-02b8269d5e85954ef"
 }
 variable "key_pair" {
   default = "mumbai-key.pem"
