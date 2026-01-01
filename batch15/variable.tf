@@ -23,7 +23,7 @@ variable "image_id" {
   default = "ami-0ecb62995f68bb549"
 }
 variable "key_pair" {
-  default = "mumbai-key"
+  default = "mumbai-key.pem"
 }
 variable "instance_type" {
   default = "t3.micro"
