@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
-    bucket = "batch151234"
-    region = "us-east-1"
+    bucket = "terra-pract"
+    region = "ap-south-1"
     key = "tfstate"
   }
 }

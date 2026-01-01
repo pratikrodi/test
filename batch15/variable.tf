@@ -1,5 +1,5 @@
 variable "region" {
-  default = "us-east-1"
+  default = "ap-south-1"
 }
 variable "project" {
   default = "marks"
@@ -23,7 +23,7 @@ variable "image_id" {
   default = "ami-0ecb62995f68bb549"
 }
 variable "key_pair" {
-  default = "id_rsa"
+  default = "mumbai-key"
 }
 variable "instance_type" {
   default = "t3.micro"
